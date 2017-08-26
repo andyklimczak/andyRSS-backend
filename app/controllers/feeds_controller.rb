@@ -3,14 +3,9 @@ class FeedsController < ApplicationController
 
   # GET /feeds
   def index
-    # @feeds = Feed.all
+    @feeds = Feed.all
 
-    # render json: @feeds
-    rss = HTTP.get('https://news.ycombinator.com/rss').to_s
-    feed = Feedjira::Feed.parse(rss)
-    p feed.entries.first.title
-    p feed.entries.first.url
-    render json: feed.entries.first.title
+    render json: @feeds
   end
 
   # GET /feeds/1
@@ -44,13 +39,13 @@ class FeedsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_feed
-      @feed = Feed.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_feed
+    @feed = Feed.find(params[:id])
+  end
 
-    # Only allow a trusted parameter "white list" through.
-    def feed_params
-      params.require(:feed).permit(:title, :link)
-    end
+  # Only allow a trusted parameter "white list" through.
+  def feed_params
+    params.require(:feed).permit(:title, :link)
+  end
 end
