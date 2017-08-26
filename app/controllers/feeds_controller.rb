@@ -5,12 +5,12 @@ class FeedsController < ApplicationController
   def index
     @feeds = Feed.all
 
-    render json: @feeds
+    render json: @feeds, include: [:items]
   end
 
   # GET /feeds/1
   def show
-    render json: @feed
+    render json: @feed, include: [:items]
   end
 
   # POST /feeds
