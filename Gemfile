@@ -21,6 +21,7 @@ gem 'redis', '~> 3.0'
 
 gem 'http'
 gem 'feedjira'
+gem 'whenever', require: false
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
