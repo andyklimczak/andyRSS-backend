@@ -5,7 +5,7 @@ class ItemsController < ApplicationController
   def index
     @items = Item.all
 
-    render json: @items
+    render json: @items.order('created_at DESC')
   end
 
   # GET /items/1
@@ -39,13 +39,13 @@ class ItemsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_item
-      @item = Item.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_item
+    @item = Item.find(params[:id])
+  end
 
-    # Only allow a trusted parameter "white list" through.
-    def item_params
-      params.require(:item).permit(:title, :link, :feed_id)
-    end
+  # Only allow a trusted parameter "white list" through.
+  def item_params
+    params.require(:item).permit(:title, :link, :feed_id, :read)
+  end
 end
