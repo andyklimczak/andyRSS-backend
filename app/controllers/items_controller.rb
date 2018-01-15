@@ -5,7 +5,7 @@ class ItemsController < ApplicationController
   def index
     @items = Item.all
 
-    render json: @items.order('created_at DESC')
+    render json: @items.order('published_at DESC'), include: [:feed]
   end
 
   # GET /items/1
