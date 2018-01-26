@@ -15,6 +15,7 @@ class FeedsController < ApplicationController
 
   # POST /feeds
   def create
+    p feed_params
     @feed = Feed.new(feed_params)
 
     if @feed.save
@@ -46,6 +47,6 @@ class FeedsController < ApplicationController
 
   # Only allow a trusted parameter "white list" through.
   def feed_params
-    params.require(:feed).permit(:title, :link)
+    params.require(:feed).permit(:title, :url)
   end
 end
