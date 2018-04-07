@@ -3,4 +3,5 @@ class Item < ApplicationRecord
 
   scope :read, -> { where read: true }
   scope :unread, -> { where read: false }
+  scope :favorite, -> { where favorite: true }
 end

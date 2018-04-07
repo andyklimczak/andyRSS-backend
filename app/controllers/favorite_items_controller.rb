@@ -1,6 +1,6 @@
-class UnreadItemsController < ApplicationController
+class FavoriteItemsController < ApplicationController
   def index
-    @items =  Item.unread
+    @items =  Item.favorite
 
     render json: @items.order('published_at DESC'), include: [:feed]
   end
